@@ -27,7 +27,8 @@ gem 'jquery-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 gem 'jquery'
-
+gem 'will_paginate-bootstrap'
+gem 'will_paginate', '~> 3.1.0'
 gem 'devise'
 gem 'cancancan', '~> 1.10'
 gem 'rolify'

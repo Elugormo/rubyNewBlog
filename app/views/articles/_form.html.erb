@@ -21,6 +21,20 @@
     <%= form.text_area :body, class: "form-control" %><br>
   </div>
   </div>
+  <div class="form-group col-md-4">
+    <%= form.label :header_image %><br>
+    <%= form.file_field :header_image, class: "form-control" %><br>
+    <div class="mt-1">
+        <% if article.header_image.present? %>
+        <%= image_tag(article.header_image, width: '100%') %>
+      <% end %>
+    </div>
+   
+  </div>
+  <div>
+    <%= form.label :status %><br>
+    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+  </div>
   <div class="actions">
     <%= form.submit 'Create', class: "btn btn-primary" %>
   </div>

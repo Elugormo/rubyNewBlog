@@ -2,28 +2,28 @@
 <h1>Articles</h1>
 
 Our blog has <%= Article.public_count %> public articles!
-
-<div class="product-block">
-    <table class="table table-striped table-bordered table-hover">
-      <thead>
-        <tr>
-          <th class="col-md-2">Title</th>
-          <th class="col-md-4">Options</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @articles.each do |article| %>
-          <tr>
-              <td class="col-md-2"><%= article.title %></td>
-              <td class="col-md-4">
-              <%= link_to 'Show', article_path(article), class: "btn btn-info" %>
-              <%= link_to 'Edit', edit_article_path(article), class: "btn  btn-warning" %>
-              <%= link_to 'Destroy', article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-              </td>
-          </tr>
+<div class="d-flex flex-wrap align-items-center  justify-content-center">
+  <% @articles.each do |article| %>
+    <%= link_to edit_article_path(article), class: 'text-decoration-none' do %>
+    <div class="card text-center m-3 post-card" style="width: 35%">
+        <% if article.header_image.present? %>
+        <div class="header-img card-img-top" style="background-image: url(<%= url_for(article.header_image) %>);"></div>
         <% end %>
-      </tbody>
-    </table>
-  </div>
-  <br>
-  <%= link_to 'New Article', new_article_path, class: "btn btn-primary" %>
+
+      <div class="card-body">
+        <h5 class="card-title mb-1 text-dark"><%= article.title %></h5>
+         <p class="card-text mb-1 text-decoration-none"><%= article.body %></p>
+          </div>
+          <div class="card-body">
+            <%= link_to 'Show', article_path(article), class: "btn btn-info" %>
+            <%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+          </div>
+        </div>
+    <% end %>
+
+<% end %>
+</div>
+<div class="d-flex justify-content-center">
+  <%= will_paginate @articles, renderer: BootstrapPagination::Rails %>
+</div>
+
