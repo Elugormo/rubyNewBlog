@@ -10,3 +10,16 @@
     background-position: center;
   }
 }
+
+.post-card-read {
+  height: 550px;
+  .header-image {
+    height: 230px;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.custom {
+  margin-top: calc(3% + 10px);
+}

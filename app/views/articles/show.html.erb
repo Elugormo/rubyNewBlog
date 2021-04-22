@@ -1,12 +1,23 @@
 <%= flash_messages %>
-<h1><%= @article.title %></h1>
+<div class="row custom">
+    <div class="col-lg-10 offset-lg-1">
+        <div class="card post-card-read mb-5">
+            <div class="header-image" style="background-image: url(<%= url_for(@article.header_image) %>);"></div>
+            <div class="card-body">
+                <div class="pl-5 pr-5 pt-4 pb-4">
+                    <h1 class="card-title mb-5"><%= @article.title %></h1>
+                    <p class="card-text mb-4"><%= @article.body %></p>
+                </div>
+                
+            </div>
+            <div class="card-body">
+                <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-primary" %>
+                <%= link_to "Back", articles_path, class: "btn btn-warning" %>
+            </div>
+        </div>
+    </div>
+</div>
 
-<p><%= @article.body %></p>
-
-<ul>
-    <li><%= link_to "Edit", edit_article_path(@article) %></li>
-    <li><%= link_to "Destroy", article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %></li>
-</ul>
 
 <h2>Comments</h2>
 <%= render @article.comments %>
@@ -14,5 +25,3 @@
 <h2>Add a comment:</h2>
 <%= render 'comments/form' %>
 
-<%= link_to 'Edit', edit_article_path(@article), class: "btn btn-warning" %>
-<%= link_to "Back", articles_path, class: "btn btn-default" %>

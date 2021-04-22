@@ -1,10 +1,7 @@
 <%= flash_messages %>
-<h1>Articles</h1>
-
-Our blog has <%= Article.public_count %> public articles!
-<div class="d-flex flex-wrap align-items-center  justify-content-center">
+<div class="d-flex flex-wrap align-items-center justify-content-center mt-5">
   <% @articles.each do |article| %>
-    <%= link_to edit_article_path(article), class: 'text-decoration-none' do %>
+    <%= link_to article_path(article), class: 'text-decoration-none' do %>
     <div class="card text-center m-3 post-card" style="width: 35%">
         <% if article.header_image.present? %>
         <div class="header-img card-img-top" style="background-image: url(<%= url_for(article.header_image) %>);"></div>
@@ -12,7 +9,7 @@ Our blog has <%= Article.public_count %> public articles!
 
       <div class="card-body">
         <h5 class="card-title mb-1 text-dark"><%= article.title %></h5>
-         <p class="card-text mb-1 text-decoration-none"><%= article.body %></p>
+         <p class="card-text mb-1 text-decoration-none"><%= article.body.truncate(50) %></p>
           </div>
           <div class="card-body">
             <%= link_to 'Show', article_path(article), class: "btn btn-info" %>
@@ -25,5 +22,6 @@ Our blog has <%= Article.public_count %> public articles!
 </div>
 <div class="d-flex justify-content-center">
   <%= will_paginate @articles, renderer: BootstrapPagination::Rails %>
+  Our blog has <%= Article.public_count %> public articles!
 </div>
 

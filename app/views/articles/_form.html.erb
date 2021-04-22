@@ -9,19 +9,20 @@
       </ul>
     </div>
   <% end %>
+  
   <div class="row">
-  <div class="form-group col-md-4">
+  <div class="form-group col">
     <%= form.label :title %><br>
     <%= form.text_field :title, class: "form-control" %>
   </div>
   </div>
   <div class="row">
-  <div class="form-group col-md-4">
+  <div class="form-group col">
     <%= form.label :body %><br>
     <%= form.text_area :body, class: "form-control" %><br>
   </div>
   </div>
-  <div class="form-group col-md-4">
+  <div class="form-group col">
     <%= form.label :header_image %><br>
     <%= form.file_field :header_image, class: "form-control" %><br>
     <div class="mt-1">
@@ -31,11 +32,12 @@
     </div>
    
   </div>
-  <div>
+  <div class="form-group col">
     <%= form.label :status %><br>
     <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
   </div>
-  <div class="actions">
+  <div class="actions d-flex justify-content-center">
     <%= form.submit 'Create', class: "btn btn-primary" %>
+    <%= link_to "Back", articles_path, class: "btn btn-default" %>
   </div>
 <% end %>
