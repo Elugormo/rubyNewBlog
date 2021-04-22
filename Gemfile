@@ -26,8 +26,11 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
+gem 'jquery'
 
-
+gem 'devise'
+gem 'cancancan', '~> 1.10'
+gem 'rolify'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
