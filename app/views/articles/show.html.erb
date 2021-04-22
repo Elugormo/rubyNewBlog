@@ -1,3 +1,4 @@
+<%= flash_messages %>
 <h1><%= @article.title %></h1>
 
 <p><%= @article.body %></p>
@@ -12,3 +13,6 @@
 
 <h2>Add a comment:</h2>
 <%= render 'comments/form' %>
+
+<%= link_to 'Edit', edit_article_path(@article), class: "btn btn-warning" %>
+<%= link_to "Back", articles_path, class: "btn btn-default" %>
