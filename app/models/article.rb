@@ -1,6 +1,7 @@
 class Article < ApplicationRecord
     include Visible
     has_many :comments, dependent: :destroy
+    belongs_to :category
     has_one_attached :header_image
     validates :title, presence: true
     validates :body, presence: true, length: { minimum: 10 }
