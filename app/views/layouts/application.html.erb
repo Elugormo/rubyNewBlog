@@ -7,49 +7,52 @@
     <%= csp_meta_tag %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>  </head>
 
   <body>
-    <nav class="navbar navbar-inverse navbar-top navbar-fixed-top">
-      
-      <div class="container-fluid">
-        <div class="container">
-          <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Ruby Blog</a>  
-       </div>
-       <%= link_to "List", articles_path, class: 'btn btn-warning' %>
-       <%= link_to "New", new_article_path, class: 'btn btn-primary' %>
-       <% if user_signed_in? %>
-  <li><%= link_to "Edit profile", edit_user_registration_path, class: 'btn btn-success' %></li>
-<% else %>
-  <li><%= link_to "Sign up", new_user_registration_path, class: 'badge badge-secondary' %></li>
-  <li><%= link_to "Login", new_user_session_path, class: 'badge badge-success' %></li>
-<% end %>
-<% if user_signed_in? %>
-  <li role="separator" class="divider"></li>
-  <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'badge badge-danger' %></li>
-<% end %>
-        </div>   
-        <div>
-        <form class="form-inline my-2 my-lg-0" action="/search">
-          <input type="text" placeholder="Search" name="q" aria-label="Search" class="form-control mr-sm-2">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="/">Ruby blog</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse" style="display: flex !important;">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item mr-3">
+            <%= link_to "List", articles_path, class: 'btn btn-info' %>
+          </li>
+          <li class="nav-item mr-3">
+            <%= link_to "New", new_article_path, class: 'btn btn-success' %>
+          </li>
+          <% if user_signed_in? %>
+            <li class="nav-item mr-3">
+              <%= link_to "Edit profile", edit_user_registration_path, class: 'btn btn-primary' %>
+            </li>
+          <% else %>
+            <li class="nav-item mr-3">
+              <%= link_to "Sign up", new_user_registration_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item mr-3">
+              <%= link_to "Login", new_user_session_path, class: 'nav-link' %>
+            </li>
+          <% end %>
+          <% if user_signed_in? %>
+            <li class="nav-item mr-3">
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-danger' %></li>
+            </li>
+          <% end %>
+        </ul>
+        <form action="/filter" class="form-inline my-2 my-lg-0" id="filter-form">
+          <%= select_tag "filter", options_for_select(['Choose filter', 'Sunset', 'Nature', 'Other']), class: 'custom-select', id:'filter_select', onchange: 'clickSubmit()' %>
+        </form>
+        <form class="form-inline mt-2 ml-4 mt-md-0" action="/search">
+          <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>  
-        <form class="form-inline my-2 my-lg-0"  id="filter-form" action="/filter">
-          <%= select_tag "filter", options_for_select(['Choose filter', 'Sunset', 'Nature', 'Other']), class: 'custom-select', id: 'filter_select', onchange:'clickSubmit()' %>
-      </form>
-    </div> 
+        </form>
       </div>
-     
-    </nav>
+    </nav> 
+       
+
     <div id="main-container" class="container" >
       <%= yield %>
     </div>

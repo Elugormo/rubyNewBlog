@@ -296,6 +296,7 @@ DEPENDENCIES
   cancancan (~> 1.10)
   capybara (>= 3.26)
   coffee-rails
+  coffee-script-source (~> 1.11, >= 1.11.1)
   devise
   jbuilder (~> 2.7)
   jquery

@@ -2,5 +2,6 @@
 
 <%= render "form", article: @article %>
 
-<%= link_to 'Show', @article, class: "btn btn-warning" %>
-<%= link_to 'Back', articles_path, class: "btn btn-default" %>
+<div class="d-flex justify-content-center">
+    <%= link_to 'Preview', @article, class: "btn btn-warning mt-2" %>
+</div>

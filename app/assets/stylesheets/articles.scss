@@ -23,3 +23,20 @@
 .custom {
   margin-top: calc(3% + 10px);
 }
+
+.comment-section {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.comments-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.custom-card-profile {
+  width: 500px;
+  text-align: left;
+}
