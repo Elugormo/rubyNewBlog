@@ -2,7 +2,9 @@
 <div class="row custom">
     <div class="col-lg-10 offset-lg-1">
         <div class="card post-card-read mb-5">
+            <% if @article.header_image.present? %>
             <div class="header-image" style="background-image: url(<%= url_for(@article.header_image) %>);"></div>
+            <% end %>
             <div class="card-body">
                 <div class="pl-5 pr-5 pt-4 pb-4">
                     <h1 class="card-title mb-5"><%= @article.title %></h1>

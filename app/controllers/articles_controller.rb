@@ -10,6 +10,10 @@ class ArticlesController < ApplicationController
     @articles = Article.where("title LIKE ?", "%" + params[:q] + "%")
   end
 
+  def filter
+    @articles = Article.where("category LIKE ?", "%" +  params[:filter] + "%")
+  end
+
   def show 
     @article = Article.find(params[:id])
   end
@@ -51,7 +55,7 @@ class ArticlesController < ApplicationController
 
   private 
     def article_params 
-      params.require(:article).permit(:title, :body, :status, :page, :header_image)
+      params.require(:article).permit(:title, :body, :status, :category, :page, :header_image)
     end 
 
 end

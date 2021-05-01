@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root "articles#index"
   get 'search', to: 'articles#search'
+  get 'filter', to: 'articles#filter'
   resources :articles do 
     resources :comments
   end
