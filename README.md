@@ -60,7 +60,7 @@ end
 ## Core Technologies
 - Ruby on Rails (main framework)
 - PostgreSQL (for database)
-- Device (for authentication)
+- Devise (for authentication)
 - Bootstrap (app design)
 
 
